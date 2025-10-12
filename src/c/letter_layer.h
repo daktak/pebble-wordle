@@ -9,6 +9,7 @@
 typedef Layer LetterLayer;
 
 LetterLayer *letter_layer_create(GPoint where);
+void init_colors(void);
 void letter_layer_destroy(LetterLayer *layer);
 void letter_layer_set_letter(LetterLayer *layer, char letter, LetterStatus status, bool confirmed, int animated);
 

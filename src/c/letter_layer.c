@@ -19,19 +19,20 @@ typedef struct {
 	bool confirmed;
 } LetterLayerData;
 
-static GColor s_layer_colors[LetterStatusCount] = {
-	GColorWhite,
-	PBL_IF_COLOR_ELSE(GColorLightGray, GColorDarkGray),
-	PBL_IF_COLOR_ELSE(GColorYellow, GColorWhite),
-	PBL_IF_COLOR_ELSE(GColorGreen, GColorBlack),
-};
+static GColor s_layer_colors[LetterStatusCount];
+static GColor s_text_colors[LetterStatusCount];
 
-static GColor s_text_colors[LetterStatusCount] = {
-	GColorBlack,
-	GColorBlack,
-	GColorBlack,
-	PBL_IF_COLOR_ELSE(GColorBlack, GColorWhite),
-};
+void init_colors(void) {
+    s_layer_colors[0] = GColorWhite;
+    s_layer_colors[1] = PBL_IF_COLOR_ELSE(GColorLightGray, GColorDarkGray);
+    s_layer_colors[2] = PBL_IF_COLOR_ELSE(GColorYellow, GColorWhite);
+    s_layer_colors[3] = PBL_IF_COLOR_ELSE(GColorGreen, GColorBlack);
+
+    s_text_colors[0] = GColorBlack;
+    s_text_colors[1] = GColorBlack;
+    s_text_colors[2] = GColorBlack;
+    s_text_colors[3] = PBL_IF_COLOR_ELSE(GColorBlack, GColorWhite);
+}
 
 static void prv_update_proc(Layer *layer, GContext *ctx);
 static char prv_to_upper(char lower);

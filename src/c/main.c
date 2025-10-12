@@ -6,6 +6,7 @@
 #include "game.h"
 #include "stat_window.h"
 #include "help_window.h"
+#include "letter_layer.h"
 
 #define MENU_OPTIONS 3
 
@@ -33,6 +34,7 @@ static void prv_handle_day_change(struct tm *tick_time, TimeUnits units_changed)
 
 
 static void prv_window_load(Window *window) {
+  init_colors();
   s_title = title_layer_create(GPoint(1, 5), true);
   layer_add_child(window_get_root_layer(window), s_title);
   s_number = text_layer_create(GRect(0, 151, 140, 16));
